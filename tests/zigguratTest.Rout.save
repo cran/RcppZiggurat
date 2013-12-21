@@ -1,0 +1,33 @@
+
+R version 3.0.2 (2013-09-25) -- "Frisbee Sailing"
+Copyright (C) 2013 The R Foundation for Statistical Computing
+Platform: i686-pc-linux-gnu (32-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> 
+> library(RcppZiggurat)
+> 
+> zsetseed(123456890)
+> print(zrnorm(10), digits=5)
+ [1] -0.034849  0.113364  0.439959  0.836486 -1.321243 -0.384294  1.506356
+ [8] -0.556584  0.564396 -2.154683
+> 
+> zsetseed(123456890)
+> summary(zrnorm(1e6))
+     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+-5.060000 -0.675800  0.000132 -0.000176  0.674100  4.671000 
+> 
+> proc.time()
+   user  system elapsed 
+  0.524   0.480   0.526 

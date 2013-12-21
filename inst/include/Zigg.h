@@ -1,6 +1,6 @@
 // -*- mode: C++; c-indent-level: 4; c-basic-offset: 4; indent-tabs-mode: nil; -*-
 //
-// ZigguratGSL.h:  Jochen Voss's Ziggurat implementation from the GNU GSL
+// Zigg.h:  Base class for different Ziggurart implementations
 //
 // Copyright (C) 2013  Dirk Eddelbuettel
 //
@@ -19,31 +19,21 @@
 // You should have received a copy of the GNU General Public License
 // along with RcppZiggurat.  If not, see <http://www.gnu.org/licenses/>.
 
-// Ziggurat using Jochen Voss's version in the GSL
+#ifndef RcppZiggurat__Zigg_h
+#define RcppZiggurat__Zigg_h
 
-#ifndef RcppZiggurat__ZigguratGSL_h
-#define RcppZiggurat__ZigguratGSL_h
+#include <cmath>
+#include <stdint.h>             // not allowed to use cstdint as it needs C++11
 
-#include <RcppGSL.h>
+namespace Ziggurat {
 
-#include <gsl/gsl_rng.h>
-#include <gsl/gsl_randist.h>
-
-class ZigguratGSL {
-public: 
-    ZigguratGSL() {
-	gsl_rng_env_setup() ;
-	r = gsl_rng_alloc (gsl_rng_default);
-    }
-    ~ZigguratGSL() {
-	gsl_rng_free(r);
-    }
-    double norm(const double sigma=1.0) {
-	return gsl_ran_gaussian_ziggurat(r, sigma);
-    }
-    // could use functions to set/get seed etc
-private:
-    gsl_rng *r;
-};
-
+    class Zigg {
+    public:
+        virtual ~Zigg() {};
+        virtual void setSeed(const uint32_t s) = 0;
+        // no getSeed() as GSL has none
+        virtual double norm() = 0;
+    };
+}
+    
 #endif

@@ -202,15 +202,140 @@ BEGIN_RCPP
     return __sexp_result;
 END_RCPP
 }
-// zrnormgsl
-Rcpp::NumericVector zrnormgsl(int n);
-RcppExport SEXP RcppZiggurat_zrnormgsl(SEXP nSEXP) {
+// zrnormGSL
+Rcpp::NumericVector zrnormGSL(int n);
+RcppExport SEXP RcppZiggurat_zrnormGSL(SEXP nSEXP) {
 BEGIN_RCPP
     SEXP __sexp_result;
     {
         Rcpp::RNGScope __rngScope;
         Rcpp::traits::input_parameter< int >::type n(nSEXP );
-        Rcpp::NumericVector __result = zrnormgsl(n);
+        Rcpp::NumericVector __result = zrnormGSL(n);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
+END_RCPP
+}
+// zrnormV1b
+Rcpp::NumericVector zrnormV1b(int n);
+RcppExport SEXP RcppZiggurat_zrnormV1b(SEXP nSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        Rcpp::traits::input_parameter< int >::type n(nSEXP );
+        Rcpp::NumericVector __result = zrnormV1b(n);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
+END_RCPP
+}
+// zrnormQL
+Rcpp::NumericVector zrnormQL(int n);
+RcppExport SEXP RcppZiggurat_zrnormQL(SEXP nSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        Rcpp::traits::input_parameter< int >::type n(nSEXP );
+        Rcpp::NumericVector __result = zrnormQL(n);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
+END_RCPP
+}
+// zsetseedQL
+void zsetseedQL(unsigned long int s);
+RcppExport SEXP RcppZiggurat_zsetseedQL(SEXP sSEXP) {
+BEGIN_RCPP
+    {
+        Rcpp::RNGScope __rngScope;
+        Rcpp::traits::input_parameter< unsigned long int >::type s(sSEXP );
+        zsetseedQL(s);
+    }
+    return R_NilValue;
+END_RCPP
+}
+// zrnormGl
+Rcpp::NumericVector zrnormGl(int n);
+RcppExport SEXP RcppZiggurat_zrnormGl(SEXP nSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        Rcpp::traits::input_parameter< int >::type n(nSEXP );
+        Rcpp::NumericVector __result = zrnormGl(n);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
+END_RCPP
+}
+// zsetseedGl
+void zsetseedGl(unsigned long int s);
+RcppExport SEXP RcppZiggurat_zsetseedGl(SEXP sSEXP) {
+BEGIN_RCPP
+    {
+        Rcpp::RNGScope __rngScope;
+        Rcpp::traits::input_parameter< unsigned long int >::type s(sSEXP );
+        zsetseedGl(s);
+    }
+    return R_NilValue;
+END_RCPP
+}
+// ziggbin
+Rcpp::NumericMatrix ziggbin(int nbins, double ndraws, const std::string generator = "Ziggurat", const int seed = 42, int edge = 7, int res = 40);
+RcppExport SEXP RcppZiggurat_ziggbin(SEXP nbinsSEXP, SEXP ndrawsSEXP, SEXP generatorSEXP, SEXP seedSEXP, SEXP edgeSEXP, SEXP resSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        Rcpp::traits::input_parameter< int >::type nbins(nbinsSEXP );
+        Rcpp::traits::input_parameter< double >::type ndraws(ndrawsSEXP );
+        Rcpp::traits::input_parameter< const std::string >::type generator(generatorSEXP );
+        Rcpp::traits::input_parameter< const int >::type seed(seedSEXP );
+        Rcpp::traits::input_parameter< int >::type edge(edgeSEXP );
+        Rcpp::traits::input_parameter< int >::type res(resSEXP );
+        Rcpp::NumericMatrix __result = ziggbin(nbins, ndraws, generator, seed, edge, res);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
+END_RCPP
+}
+// ziggsum
+Rcpp::NumericVector ziggsum(int nbins, double ndraws, const std::string generator = "Ziggurat", const int seed = 42);
+RcppExport SEXP RcppZiggurat_ziggsum(SEXP nbinsSEXP, SEXP ndrawsSEXP, SEXP generatorSEXP, SEXP seedSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        Rcpp::traits::input_parameter< int >::type nbins(nbinsSEXP );
+        Rcpp::traits::input_parameter< double >::type ndraws(ndrawsSEXP );
+        Rcpp::traits::input_parameter< const std::string >::type generator(generatorSEXP );
+        Rcpp::traits::input_parameter< const int >::type seed(seedSEXP );
+        Rcpp::NumericVector __result = ziggsum(nbins, ndraws, generator, seed);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
+END_RCPP
+}
+// ziggtest
+Rcpp::NumericVector ziggtest(int nbins, double ndraws, const std::string generator = "Ziggurat", const int seed = 42);
+RcppExport SEXP RcppZiggurat_ziggtest(SEXP nbinsSEXP, SEXP ndrawsSEXP, SEXP generatorSEXP, SEXP seedSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        Rcpp::traits::input_parameter< int >::type nbins(nbinsSEXP );
+        Rcpp::traits::input_parameter< double >::type ndraws(ndrawsSEXP );
+        Rcpp::traits::input_parameter< const std::string >::type generator(generatorSEXP );
+        Rcpp::traits::input_parameter< const int >::type seed(seedSEXP );
+        Rcpp::NumericVector __result = ziggtest(nbins, ndraws, generator, seed);
         PROTECT(__sexp_result = Rcpp::wrap(__result));
     }
     UNPROTECT(1);

@@ -57,7 +57,39 @@ zgetseed <- function() {
     .Call('RcppZiggurat_zgetseed', PACKAGE = 'RcppZiggurat')
 }
 
-zrnormgsl <- function(n) {
-    .Call('RcppZiggurat_zrnormgsl', PACKAGE = 'RcppZiggurat', n)
+zrnormGSL <- function(n) {
+    .Call('RcppZiggurat_zrnormGSL', PACKAGE = 'RcppZiggurat', n)
+}
+
+zrnormV1b <- function(n) {
+    .Call('RcppZiggurat_zrnormV1b', PACKAGE = 'RcppZiggurat', n)
+}
+
+zrnormQL <- function(n) {
+    .Call('RcppZiggurat_zrnormQL', PACKAGE = 'RcppZiggurat', n)
+}
+
+zsetseedQL <- function(s) {
+    invisible(.Call('RcppZiggurat_zsetseedQL', PACKAGE = 'RcppZiggurat', s))
+}
+
+zrnormGl <- function(n) {
+    .Call('RcppZiggurat_zrnormGl', PACKAGE = 'RcppZiggurat', n)
+}
+
+zsetseedGl <- function(s) {
+    invisible(.Call('RcppZiggurat_zsetseedGl', PACKAGE = 'RcppZiggurat', s))
+}
+
+ziggbin <- function(nbins, ndraws, generator = "Ziggurat", seed = 42L, edge = 7L, res = 40L) {
+    .Call('RcppZiggurat_ziggbin', PACKAGE = 'RcppZiggurat', nbins, ndraws, generator, seed, edge, res)
+}
+
+ziggsum <- function(nbins, ndraws, generator = "Ziggurat", seed = 42L) {
+    .Call('RcppZiggurat_ziggsum', PACKAGE = 'RcppZiggurat', nbins, ndraws, generator, seed)
+}
+
+ziggtest <- function(nbins, ndraws, generator = "Ziggurat", seed = 42L) {
+    .Call('RcppZiggurat_ziggtest', PACKAGE = 'RcppZiggurat', nbins, ndraws, generator, seed)
 }
 
