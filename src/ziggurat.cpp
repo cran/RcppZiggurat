@@ -33,6 +33,7 @@
 #include <ZigguratGSL.h>
 #include <ZigguratQL.h>
 #include <ZigguratGretl.h>
+#include <ZigguratR.h>
 
 
 // Version 1 -- Derived from Marsaglia and Tsang, JSS, 2000
@@ -220,6 +221,27 @@ void zsetseedGl(unsigned long int s) {
     zigggl.setSeed(s);
     return;
 }
+
+
+// Version 9 -- Ziggurat with R's unif. generator
+static Ziggurat::R::ZigguratR ziggr;
+
+// [[Rcpp::export]]
+Rcpp::NumericVector zrnormR(int n) {
+    Rcpp::NumericVector x(n);
+    for (int i=0; i<n; i++) {
+        x[i] = ziggr.norm();
+    }
+    return x;
+}
+
+// see help(RNGind) and help(Random.user) in R
+static double x_;
+extern "C" double *user_norm_rand() {
+    x_ = ziggr.norm();
+    return &x_;
+}
+
 
 
 

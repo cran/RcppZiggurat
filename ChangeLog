@@ -1,3 +1,29 @@
+2014-01-26  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION: Version 0.1.2
+
+2014-01-22  Dirk Eddelbuettel  <edd@debian.org>
+
+	* NAMESPACE: Add importFrom(Rcpp, evalCpp) needed for next Rcpp
+
+2013-12-29  Dirk Eddelbuettel  <edd@debian.org>
+
+	* demo/notForCRANbenchmark.R: Updates to the benchmark deploying the
+	generators from Boost, Armadillo and the C++11 library -- none of
+	which are particularly fast.
+	* demo/notForCRANbenchmark.cpp: Idem for C++ side of benchmark
+
+	* .travis.yml: Do not install highlight as we check without vignettes
+
+	* man/ziggurat.Rd: Updated and extended basic manual page
+
+2013-12-28  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/include/ZigguratR.h (Ziggurat): Added a generator which uses
+	R's unif_rand() as a source of uniform RNG -- so that we can seed it
+	from R when Ziggurat is used as the user-supplied generator
+	* src/ziggurat.cpp: Make generator available as user_norm_rand()
+
 2013-12-22  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION: Version 0.1.1
