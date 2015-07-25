@@ -64,14 +64,14 @@ namespace Ziggurat {
 #define CONG (jcong = 69069 * jcong + 1234567)
 #define KISS ((MWC ^ CONG ) + SHR3)
     
-#define UNI  (0.5 + (signed) KISS * 0.2328306e-09)
+#define UNI  (0.5 + (int32_t) KISS * 0.2328306e-09)
 #define IUNI KISS
-#define RNOR (hz = KISS, iz = hz & 127, ( fabs ( hz ) < kn[iz] ) ? hz * wn[iz] : nfix())
+#define RNOR (hz = KISS, iz = hz & 127, ( abs ( hz ) < kn[iz] ) ? hz * wn[iz] : nfix())
 
     class Ziggurat : public Zigg {
     public:
-        Ziggurat(uint32_t seed=123456789) : jcong(234567891), jsr(123456789), 
-                                            w(345678912), z(456789123) {
+        Ziggurat(uint32_t seed=123456789) : jcong(380116160), jsr(123456789), 
+                                            w(521288629), z(362436069) {
             init();
             setSeed(seed);
         }
@@ -92,7 +92,7 @@ namespace Ziggurat {
         }
 
     private:
-        float fn[128];
+        double fn[128];
         int32_t hz;
         uint32_t iz;
         uint32_t jcong;
@@ -100,7 +100,7 @@ namespace Ziggurat {
         uint32_t jz;
         uint32_t kn[128];
         uint32_t w;
-        float wn[128];
+        double wn[128];
         uint32_t z;
 
         void init() {               // called from ctor, could be in ctor
@@ -116,30 +116,30 @@ namespace Ziggurat {
             kn[0] = (uint32_t) ((dn / q) * m1);
             kn[1] = 0;
 
-            wn[0]   = (float) (q / m1);
-            wn[127] = (float) (dn / m1);
+            wn[0]   = (double) (q / m1);
+            wn[127] = (double) (dn / m1);
             
             fn[0] = 1.0;
-            fn[127] = (float) (exp(- 0.5 * dn * dn));
+            fn[127] = (double) (exp(- 0.5 * dn * dn));
         
             for (i = 126; 1 <= i; i--) {
                 dn = sqrt(- 2.0 * log (vn / dn + exp (- 0.5 * dn * dn)));
                 kn[i+1] = (uint32_t ) ((dn / tn ) * m1);
                 tn = dn;
-                fn[i] = (float) (exp( - 0.5 * dn * dn));
-                wn[i] = (float) (dn / m1);
+                fn[i] = (double) (exp( - 0.5 * dn * dn));
+                wn[i] = (double) (dn / m1);
             }
             return;
         }
 
         //inline float nfix(void) { return wn[34]; }
-        inline float nfix(void) {
-            const float r = 3.442620;
-            float x, y;
+        inline double nfix(void) {
+            const double r = 3.442620;
+            double x, y;
             
             for (;;) {
                 //  IZ = 0 handles the base strip.
-                x = (float) (hz * wn[iz]);
+                x = (double) (hz * wn[iz]);
                 if ( iz == 0 ) { 
                     do {
                         x = - log (UNI) * 0.2904764; 
@@ -154,14 +154,13 @@ namespace Ziggurat {
                     return x;
                 }
                 //  Initiate, try to exit the loop.
-                hz = KISS;
+                hz = SHR3;      // note we still use SHR3; using KISS leads to degradation
                 iz = (hz & 127);
-                if (fabs(hz) < kn[iz]) {
-                    return ((float) (hz * wn[iz]));
+                if (abs(hz) < kn[iz]) {
+                    return ((double) (hz * wn[iz]));
                 }
             }
         }
-
     };
 
 #undef znew

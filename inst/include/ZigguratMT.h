@@ -65,7 +65,7 @@ namespace MT {
 #define UNI (.5 + (int32_t) SHR3*.2328306e-9)
 #define IUNI SHR3
 
-#define RNOR (hz=SHR3, iz=hz&127, (fabs(hz)<kn[iz])? hz*wn[iz] : nfix())
+#define RNOR (hz=SHR3, iz=hz&127, (abs(hz)<kn[iz])? hz*wn[iz] : nfix())
 //#define REXP (jz=SHR3, iz=jz&255, (    jz <ke[iz])? jz*we[iz] : efix())
 
     class ZigguratMT : public Zigg {
@@ -73,7 +73,7 @@ namespace MT {
         uint32_t jz, jsr;
         int32_t hz;
         uint32_t iz, kn[128]; /*, ke[256];*/
-        float wn[128],fn[128]; /*, we[256],fe[256];*/
+        double wn[128],fn[128]; /*, we[256],fe[256];*/
 
     public: 
         ZigguratMT(uint32_t seed=123456789) : jsr(123456789) {
@@ -123,9 +123,9 @@ namespace MT {
         }
 
         // nfix() generates variates from the residue when rejection in RNOR occurs. 
-        inline float nfix(void) {
-            const float r = 3.442620f;      // The start of the right tail 
-            float x, y;
+        inline double nfix(void) {
+            const double r = 3.442620f;      // The start of the right tail 
+            double x, y;
             for(;;) {
                 x=hz*wn[iz];                // iz==0, handles the base strip 
                 if(iz==0) {
@@ -139,7 +139,7 @@ namespace MT {
                 // initiate, try to exit for(;;) for loop*/
                 hz=SHR3;
                 iz=hz&127;
-                if(fabs(hz)<kn[iz]) return (hz*wn[iz]);
+                if(abs(hz)<kn[iz]) return (hz*wn[iz]);
             }
         }
     };

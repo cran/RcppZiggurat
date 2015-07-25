@@ -35,8 +35,7 @@
 // b) switching from use of (unsigned) long variable (which implied 32 bit
 //    at the time) to use of (u)int32_t from the stdint.h header file
 // c) removing the exponential generator
-// d) using fabs() instead of abs()
-// e) switching kn[] back to uint32_t
+// d) switching kn[] back to uint32_t
 //
 // Per the article of Leong, Zhang et al (see file ZigguratLZLLV.h
 // here), this generator based on the original Marsaglia and Tsang
@@ -68,14 +67,14 @@ namespace V1 {
         uint32_t getSeed() { return jsr; }
         double norm(void) {
             int hz, iz;
-            const float r = 3.442620;
-            float value, x, y;
+            const double r = 3.442620;
+            double value, x, y;
         
             hz = shr3();
             iz = (hz & 127);
         
-            if (fabs(hz) < kn[iz]) {
-                value = (float) (hz) * wn[iz];
+            if (abs(hz) < kn[iz]) {
+                value = (double) (hz) * wn[iz];
             } else {
                 for (;;) {
                     if (iz == 0) {
@@ -94,7 +93,7 @@ namespace V1 {
                         }
                         break;
                     }
-                    x = (float) ( hz ) * wn[iz];
+                    x = (double) ( hz ) * wn[iz];
                     if (fn[iz] + r4_uni() * (fn[iz-1] - fn[iz]) < exp (- 0.5 * x * x )) {
                         value = x;
                         break;
@@ -103,8 +102,8 @@ namespace V1 {
                     hz = shr3();
                     iz = (hz & 127);
                 
-                    if (fabs(hz) < kn[iz]) {
-                        value = (float) (hz) * wn[iz];
+                    if (abs(hz) < kn[iz]) {
+                        value = (double) (hz) * wn[iz];
                         break;
                     }
                 }
@@ -114,7 +113,7 @@ namespace V1 {
 
     private:
         uint32_t kn[128];
-        float fn[128], wn[128];
+        double fn[128], wn[128];
         uint32_t jsr;
 
         uint32_t shr3() {
@@ -131,10 +130,10 @@ namespace V1 {
             return value;
         }
 
-        float r4_uni() {
+        double r4_uni() {
 
             uint32_t jsr_input;
-            float value;
+            double value;
 
             jsr_input = jsr;
 
@@ -142,7 +141,7 @@ namespace V1 {
             jsr = ( jsr ^ ( jsr >>   17 ) );
             jsr = ( jsr ^ ( jsr <<    5 ) );
 
-            value = fmod ( 0.5 + ( float ) ( jsr_input + jsr ) / 65536.0 / 65536.0, 1.0 );
+            value = fmod ( 0.5 + ( double ) ( jsr_input + jsr ) / 65536.0 / 65536.0, 1.0 );
 
             return value;
         }
@@ -160,18 +159,18 @@ namespace V1 {
             kn[0] = (uint32_t) ((dn / q) * m1);
             kn[1] = 0;
 
-            wn[0] = (float) (q / m1);
-            wn[127] = (float) (dn / m1);
+            wn[0] = (double) (q / m1);
+            wn[127] = (double) (dn / m1);
 
             fn[0] = 1.0;
-            fn[127] = (float) (exp (- 0.5 * dn * dn));
+            fn[127] = (double) (exp (- 0.5 * dn * dn));
         
             for (i = 126; 1 <= i; i--) {
                 dn = sqrt(- 2.0 * log (vn / dn + exp(- 0.5 * dn * dn)));
                 kn[i+1] = (uint32_t) ((dn / tn) * m1);
                 tn = dn;
-                fn[i] = (float) (exp (- 0.5 * dn * dn));
-                wn[i] = (float) (dn / m1);
+                fn[i] = (double) (exp (- 0.5 * dn * dn));
+                wn[i] = (double) (dn / m1);
             }
             return;
         }
