@@ -1,3 +1,22 @@
+2017-09-27  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): New release
+
+2017-09-26  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Roll minor version
+
+	* vignettes/RcppZiggurat.Rmd: Renamed, now uses pinp package
+	* vignettes/.install_extras.inactive: No longer install .bib
+
+	* NAMESPACE: Added .registration=TRUE
+	* R/RcppExports.R: Regenerated for dynamic symbol registration
+	* src/RcppExports.cpp: Idem
+
+2017-08-26  Dirk Eddelbuettel  <edd@debian.org>
+
+	* .travis.yml: Use run.sh from r-travis
+
 2015-07-25  Dirk Eddelbuettel  <edd@debian.org>
 
 	* .travis.yml: Use r-cran-* packages for faster test
