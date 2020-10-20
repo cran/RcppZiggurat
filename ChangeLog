@@ -1,3 +1,55 @@
+2020-10-18  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Release 0.1.6
+
+	* vignettes/RcppZiggurat.Rmd (Rcpp): Remove old tweak on final
+	pagebreak no longer needed with updated pinp package
+
+2020-10-15  Dirk Eddelbuettel  <edd@debian.org>
+
+	* README.md: Update one URLs to new updated value
+	* man/RcppZiggurat-package.Rd: Idem
+	* man/ziggurat.Rd: Idem
+
+	* .travis.yml (dist): Switch to focal, tweak PKG_TGZ setting
+
+	* cleanup: Change shebang to #!/bin/sh
+
+2020-06-03  Dirk Eddelbuettel  <edd@debian.org>
+
+	* README.md: Added 'last commit' badge
+
+	* .travis.yml (dist): Switch to bionic
+
+2019-06-26  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Author): Use name without email as in other packages
+
+2018-09-15  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Roll minor version
+
+	* inst/include/Ziggurat.h (Ziggurat): Added parameter getter and
+	setter covering the four internal parameters
+	* src/ziggurat.cpp (zgetpars, zsetpars): Added accessors
+
+	* man/ziggurat.Rd: Added documentation
+
+	* src/init.c: Deleted, content now in RcppExports.cpp
+	* src/RcppExports.cpp: Updated
+
+	* inst/NEWS.Rd: Updated
+
+	* .travis.yml: Run Travis with Docker and rcpp/plus container
+
+2018-09-02  Dirk Eddelbuettel  <edd@debian.org>
+
+	* .travis.yml: Switch Travis CI to R 3.5 repo
+
+2018-08-17  Blagoje Ivanovic  <blagoje.r.ivanovic@gmail.com>
+
+	* vignettes/RcppZiggurat.Rmd: Correct several typos
+
 2018-06-10  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Release 0.1.5

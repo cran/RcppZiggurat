@@ -1,4 +1,4 @@
-## ----prelim, echo=FALSE--------------------------------------------------
+## ----prelim, echo=FALSE-------------------------------------------------------
 library(RcppZiggurat)
 ## this RData file contains the pre-run results 
 ##
@@ -16,7 +16,7 @@ library(RcppZiggurat)
 ##
 load("RcppZiggurat.RData")
 
-## ----R_normal_RNGs,echo=FALSE,eval=FALSE---------------------------------
+## ----R_normal_RNGs,echo=FALSE,eval=FALSE--------------------------------------
 #  library(microbenchmark)
 #  res <- microbenchmark({RNGkind(,"Kinderman-Ramage"); rnorm(1e6)},
 #                        {RNGkind(,"Ahrens-Dieter"); rnorm(1e6)},
@@ -26,7 +26,7 @@ load("RcppZiggurat.RData")
 #  levels(res$expr) <- c("KR", "AH", "BM", "Inv")
 #  #saveRDS(res, file="~/git/rcppziggurat/vignettes/Rspeed.rds")
 
-## ----R_normal_RNGs_Plot,eval=FALSE,echo=FALSE,message=FALSE--------------
+## ----R_normal_RNGs_Plot,eval=FALSE,echo=FALSE,message=FALSE-------------------
 #  library(lattice)
 #  rdf <- as.data.frame(rspeed)
 #  rdf[,1] <- ordered(rdf[,1], levels=c("AH","KR","Inv","BM"), labels=c("AH","KR","Inv","BM"))
@@ -39,7 +39,7 @@ load("RcppZiggurat.RData")
 #                                                      varwidth=FALSE, box.ratio=box.ratio)} )
 #                                          #dev.off()
 
-## ----Zigg_normal_RNGs,echo=FALSE,eval=FALSE------------------------------
+## ----Zigg_normal_RNGs,echo=FALSE,eval=FALSE-----------------------------------
 #  library(microbenchmark)
 #  library(lattice)
 #  library(RcppZiggurat)
@@ -53,7 +53,7 @@ load("RcppZiggurat.RData")
 #  levels(res$expr) <- c("RInv", "Zigg", "ZiggGSL", "ZiggQL", "ZiggGretl")
 #  #saveRDS(res, file="~/git/rcppziggurat/vignettes/Zigspeed.rds")
 
-## ----Zigg_normal_RNGs_Plot,echo=FALSE,fig=TRUE,eval=FALSE----------------
+## ----Zigg_normal_RNGs_Plot,echo=FALSE,fig=TRUE,eval=FALSE---------------------
 #  library(lattice)
 #  #res <- readRDS("~/git/rcppziggurat/vignettes/Zigspeed.rds")
 #  zdf <- as.data.frame(zigspeed)
@@ -66,12 +66,12 @@ load("RcppZiggurat.RData")
 #                   panel.violin(..., col="lightgray", varwidth=FALSE, box.ratio=box.ratio)
 #  }))
 
-## ----stdtest, echo=FALSE, fig=TRUE, eval=FALSE---------------------------
+## ----stdtest, echo=FALSE, fig=TRUE, eval=FALSE--------------------------------
 #  RcppZiggurat:::plotAll(stdres)
 
-## ----nortest, echo=FALSE, fig=TRUE, eval=FALSE---------------------------
+## ----nortest, echo=FALSE, fig=TRUE, eval=FALSE--------------------------------
 #  RcppZiggurat:::plotAll(norres)
 
-## ----chisqtest, echo=FALSE, print=FALSE, fig=TRUE, eval=FALSE------------
+## ----chisqtest, echo=FALSE, print=FALSE, fig=TRUE, eval=FALSE-----------------
 #  RcppZiggurat:::plotChiSq(chires)
 

@@ -22,6 +22,8 @@
 \alias{zsetseedGl}
 \alias{zgetseed}
 \alias{zgetseedV1}
+\alias{zgetpars}
+\alias{zsetpars}
 \alias{ziggbin}
 \alias{ziggsum}
 \alias{ziggtest}
@@ -52,11 +54,14 @@
   zsetseedMT(s)
   zgetseed()
   zgetseedV1()
+  zgetpars()
+  zsetpars(p)
 }
 \arguments{
   \item{n}{An integer determining the length of the returned N(0,1) vector.}
   \item{x}{A numeric vector, already allocated, that is to filled with N(0,1) draws.}
   \item{s}{An integer number used to seed the Ziggurat algorithm.}
+  \item{p}{An numeric vector of length four with the state parameters.}
 }
 \value{
   The \code{zrnorm*} functions all return a vector of the requested
@@ -65,7 +70,11 @@
   The \code{zsetseed*} functions do not return a value, but set the seed
   of the generator.
 
-  The \code{zgetseed*} functions return the (integer) seed.
+  The \code{zgetseed*} functions return the (integer) seed. This is
+  actually not sufficient to capture the state, so \code{zgetpars}
+  \code{zsetpars} provide this functionality with a vector of size four.
+  Use these functions with caution.
+  
 }
 \details{
   The \sQuote{MT} variants provide the original Marsaglia and Tsang
@@ -103,16 +112,16 @@
 \references{
   George Marsaglia and Wai Wan Tsang. The Ziggurat Method for Generating Random Variables.
   Journal of Statistical Software, Vol 5, Iss 8, Oct 2000
-  \url{http://www.jstatsoft.org/v05/i08}
+  \url{https://www.jstatsoft.org/v05/i08}
    
   Philip H W Leong, Ganglie Zhang, Dong-U Lee, Wayne Luk, and John Villasenor.
   A Comment on the Implementation of the Ziggurat method,
   Journal of Statistical Software, Vol 12, Iss 7, Feb 2005
-  \url{http://www.jstatsoft.org/v12/i07}
+  \url{https://www.jstatsoft.org/v12/i07}
 
-  Website of John Burkardt. \url{http://people.sc.fsu.edu/~jburkardt/}
+  Website of John Burkardt. \url{https://people.sc.fsu.edu/~jburkardt/}
 
-  Website of Jochen Voss. \url{http://www.seehuhn.de/pages/ziggurat}
+  Website of Jochen Voss. \url{https://www.seehuhn.de/pages/ziggurat}
 }
 \seealso{\link{RcppZiggurat-package}}
 \author{Dirk Eddelbuettel}
