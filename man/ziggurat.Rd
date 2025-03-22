@@ -1,5 +1,7 @@
 \name{zrnorm}
 \alias{zrnorm}
+\alias{zrexp}
+\alias{zruni}
 \alias{zrnormLZLLV}
 \alias{zrnormMT}
 \alias{zrnormV1}
@@ -36,6 +38,8 @@
 }
 \usage{
   zrnorm(n)
+  zrexp(n)
+  zruni(n)
   zrnormLZLLV(n)
   zrnormMT(n)
   zrnormV1(n)
@@ -58,7 +62,8 @@
   zsetpars(p)
 }
 \arguments{
-  \item{n}{An integer determining the length of the returned N(0,1) vector.}
+  \item{n}{An integer determining the length of the returned N(0,1) (or
+    expoonential or uniform) vector.}
   \item{x}{A numeric vector, already allocated, that is to filled with N(0,1) draws.}
   \item{s}{An integer number used to seed the Ziggurat algorithm.}
   \item{p}{An numeric vector of length four with the state parameters.}
@@ -74,6 +79,10 @@
   actually not sufficient to capture the state, so \code{zgetpars}
   \code{zsetpars} provide this functionality with a vector of size four.
   Use these functions with caution.
+
+  Following the original paper, \code{rexp} also provides a vector of random
+  draws from the exponential distribution. In addition, \code{runi} offers random
+  draws from the uniform distribution (which is used internally).
   
 }
 \details{
@@ -108,16 +117,22 @@
   generator in R.  However, it stores state in R's internal structures
   which makes it a little slower than other alternatives available here.
 
+  To turn an N(0,1)-distributed draw into N(mean,sd), multiply by sd and add
+  mean. To turn and Exp(1)-distributed draw into Exp(rate), divide by
+  lambda. Working out how to create a Unif(low, high) from a Unif(0,1) is
+  left as an exercise to the reader.  If in doubt, stick with functions from
+  (base) R which are extremely well-tested and widely used.
+
 }
 \references{
   George Marsaglia and Wai Wan Tsang. The Ziggurat Method for Generating Random Variables.
   Journal of Statistical Software, Vol 5, Iss 8, Oct 2000
-  \url{https://www.jstatsoft.org/v05/i08}
+  \doi{10.18637/jss.v005.i08}.
    
   Philip H W Leong, Ganglie Zhang, Dong-U Lee, Wayne Luk, and John Villasenor.
   A Comment on the Implementation of the Ziggurat method,
   Journal of Statistical Software, Vol 12, Iss 7, Feb 2005
-  \url{https://www.jstatsoft.org/v12/i07}
+  \doi{10.18637/jss.v012.i07}.
 
   Website of John Burkardt. \url{https://people.sc.fsu.edu/~jburkardt/}
 

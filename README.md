@@ -1,10 +1,10 @@
 
 ## RcppZiggurat: Rcpp Bindings for Ziggurat RNGs
 
-[![Build Status](https://travis-ci.org/eddelbuettel/rcppziggurat.svg)](https://travis-ci.org/eddelbuettel/rcppziggurat) 
-[![License](http://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html) 
-[![CRAN](http://www.r-pkg.org/badges/version/RcppZiggurat)](https://cran.r-project.org/package=RcppZiggurat) 
-[![Downloads](http://cranlogs.r-pkg.org/badges/RcppZiggurat?color=brightgreen)](https://www.r-pkg.org:443/pkg/RcppZiggurat)
+[![CI](https://github.com/eddelbuettel/rcppziggurat/workflows/ci/badge.svg)](https://github.com/eddelbuettel/rcppziggurat/actions?query=workflow%3Aci)
+[![License](https://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](https://www.gnu.org/licenses/gpl-2.0.html) 
+[![CRAN](https://www.r-pkg.org/badges/version/RcppZiggurat)](https://cran.r-project.org/package=RcppZiggurat) 
+[![Downloads](https://cranlogs.r-pkg.org/badges/RcppZiggurat?color=brightgreen)](https://www.r-pkg.org:443/pkg/RcppZiggurat)
 [![Last Commit](https://img.shields.io/github/last-commit/eddelbuettel/rcppziggurat)](https://github.com/eddelbuettel/rcppziggurat)
 
 ### Overview

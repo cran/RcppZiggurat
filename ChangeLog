@@ -1,3 +1,110 @@
+2025-03-22  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Release 0.1.7
+
+	* tests/zigguratTest.R: Set precision on third print too
+	* tests/zigguratTest.Rout.save: Regenerated
+
+	* DESCRIPTION (Suggests): Added 'ggplot2'
+	* DESCRIPTION (Description): Mention 'zigg'
+
+	* .Rbuildignore: Add .editorconfig
+
+	* .github/workflows/ci.yaml: Install Suggests, install libgsl-dev
+
+	* vignettes/RcppZiggurat.bib: Restore bib file, update entries
+	* vignettes/RcppZiggurat.bib: Use .bib, mention 'zigg'
+	* vignettes/bib.tex: Removed
+
+	* inst/include/ZigguratR.h: Comment-out one unused variable
+
+2025-01-04  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Roll micro version and date
+
+	* man/ziggurat.Rd: Briefly document possible transformations
+
+2025-01-03  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/include/Ziggurat.h (runi): Expose internally used uniform RNG
+	* src/ziggurat.cpp (zruni): Provide R-accessible wrapper for runi()
+	* man/ziggurat.Rd: Document zrexp() and zruni()
+	* src/RcppExports.cpp: Regenerated
+	* R/RcppExports.R: Idem
+
+2025-01-02  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/include/Ziggurat.h (kiss): Use an inline function avoiding a
+	compiler nag relative which KISS macro triggers
+	(rexp): Added, using inline kiss()
+	(efix): Added as well supporting rexp()
+	(init): Also initialize tables for exponential RNG
+
+	* src/ziggurat.cpp (zrexp): Added, calling rexp()
+	* man/ziggurat.Rd: Add alias for zrexp()
+	* src/RcppExports.cpp: Regenerated
+	* R/RcppExports.R: Idem
+
+	* .github/workflows/ci.yaml: Simplify to r-ci with included bootstrap
+
+2024-12-30  Dirk Eddelbuettel  <edd@debian.org>
+
+	* R/standardTest.R (.safeMaxCores): New helper function to provide
+	value of 'mc.cores' if set, else 1 on Windows and 2 everywhere else
+	* R/standardTest.R (standardTest): Use .safeMaxCores()
+	* R/normalTest.R (normalTest): Idem
+	* R/chisqTest.R (chisqTest): Idem
+
+2024-10-24  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Authors@R): Added
+
+2024-07-18  Dirk Eddelbuettel  <edd@debian.org>
+
+	* README.md: Switch some URLs from http to https
+
+2024-04-08  Dirk Eddelbuettel  <edd@debian.org>
+
+	* .github/workflows/ci.yaml (jobs): Update to actions/checkout@v4,
+	add r-ci-setup actions
+
+2022-11-29  Dirk Eddelbuettel  <edd@debian.org>
+
+	* .github/workflows/ci.yaml (jobs): Update to actions/checkout@v3
+
+2021-12-19  Dirk Eddelbuettel  <edd@debian.org>
+
+	* README.md: Remove unused continuous integration artifact and badge
+
+2021-10-13  Dirk Eddelbuettel  <edd@debian.org>
+
+	* man/ziggurat.Rd: Refinement of doi use in Rd file
+ 	* man/RcppZiggurat-package.Rd: Idem
+
+2021-10-10  Dirk Eddelbuettel  <edd@debian.org>
+
+	* man/ziggurat.Rd: Change JSS url to use doi per JSS requent
+ 	* man/RcppZiggurat-package.Rd: Idem
+
+2021-07-12  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Roll minor version and date
+
+2021-06-23  Jeroen Ooms  <jeroenooms@gmail.com>
+
+	* tools/winlibs.R: Update to GSL 2.7 and support UCRT build
+	* src/Makevars.win: Update to GSL 2.7
+	* src/Makevars.ucrt: Support UCRT build
+
+2021-05-26  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (URL, BugReports): Added links
+
+2021-01-14  Dirk Eddelbuettel  <edd@debian.org>
+
+        * .github/workflows/ci.yaml: Add CI runner using r-ci
+	* README.md: Add new badge
+
 2020-10-18  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Release 0.1.6
@@ -197,4 +304,3 @@
 2013-10-06  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION: Initial 0.0.1 packaging, github push and CRAN upload
-
